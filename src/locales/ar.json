@@ -1,5 +1,23 @@
 {
   "general": {
-    "jusoor": "جسور"
+    "jusoor": "جسور",
+    "support": "support@jusoor.com",
+    "copyright": "@ جسور 2024"
+  },
+  "login": {
+    "login": "تسجيل الدخول",
+    "loginIntro": "حياك الله في مجلس ما فيه نفس ثقيلة",
+    "email": "الايميل",
+    "emailPlaceholder": "ادخل الايميل الخاص بك",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "*******",
+    "loginViaKFUPM": "الدخول عن طريق الجامعة",
+    "alreadyHaveAccount": "لديك حساب؟",
+    "registerNewAccountName": "تسجيل حساب جديد",
+    "registerNewAccountAction": "سجل حساب جديد",
+    "name": "الاسم",
+    "namePlaceholder": "ادخل اسمك",
+    "doNotHaveAccount": "ليس لديك حساب؟",
+    "signUp": "سجل الآن"
   }
 }

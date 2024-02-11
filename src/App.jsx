@@ -5,6 +5,8 @@ import { useEffect } from "react";
 //SECTION - PAGES
 import Booking from "./features/booking/pages/Booking";
 import Home from "./features/landing/pages/Home";
+import Login from "./features/auth/pages/Login";
+import Register from "./features/auth/pages/Register";
 
 //SECTION - COMPONENTS
 import Wrapper from "./shared/template/Wrapper/Wrapper";
@@ -14,7 +16,6 @@ import LoginWrapper from "./shared/template/Wrapper/LoginWrapper";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AuthProtected from "./routes/AuthProtected";
 import LoginProtected from "./routes/LoginProtected";
-import Login from "./features/auth/pages/Login";
 import { useDispatch } from "react-redux";
 import { flushAuth } from "./store/slices/auth";
 
@@ -42,6 +43,10 @@ const App = () => {
           <Route
             path="/login"
             element={<LoginWrapper component={<Login />} />}
+          />
+          <Route
+            path="/register"
+            element={<LoginWrapper component={<Register />} />}
           />
         </Route>
         <Route

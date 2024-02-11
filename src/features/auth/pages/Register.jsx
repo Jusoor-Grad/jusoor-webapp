@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { HiOutlineMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -26,12 +26,19 @@ const Login = () => {
           <div className="flex flex-col gap-8 w-11/12 sm:w-3/5">
             <div>
               <p className="text-gray-900 font-bold text-4xl">
-                {t("login.login")}
+                {t("login.registerNewAccountName")}
               </p>{" "}
               <p className="text-gray-500 text-lg">{t("login.loginIntro")}</p>
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-5">
+                <div>
+                  <p className="font-bold">{t("login.name")}</p>
+                  <Input
+                    type="email"
+                    placeholder={t("login.namePlaceholder")}
+                  />
+                </div>
                 <div>
                   <p className="font-bold">{t("login.email")}</p>
                   <Input
@@ -49,7 +56,9 @@ const Login = () => {
               </div>{" "}
               <div className="flex flex-col gap-2">
                 <Button className="bg-primary-500">
-                  <p className="font-bold">{t("login.login")}</p>
+                  <p className="font-bold">
+                    {t("login.registerNewAccountAction")}
+                  </p>
                 </Button>
                 <Button className="bg-primary-900">
                   {" "}
@@ -63,12 +72,12 @@ const Login = () => {
             </div>
 
             <div className="flex flex-row gap-2 justify-center">
-              <p className="text-gray-500">{t("login.doNotHaveAccount")}</p>{" "}
+              <p className="text-gray-500">{t("login.alreadyHaveAccount")}</p>{" "}
               <p
                 className="text-primary-700 underline cursor-pointer"
-                onClick={() => navigate("/register")}
+                onClick={() => navigate("/login")}
               >
-                {t("login.signUp")}
+                {t("login.login")}
               </p>
             </div>
           </div>{" "}
@@ -96,4 +105,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

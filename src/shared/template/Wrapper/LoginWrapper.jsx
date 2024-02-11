@@ -3,13 +3,11 @@
 // import Navbar from "../Navbar/Navbar";
 
 const LoginWrapper = ({ component }) => {
-  return (
-    <>
-      {/* <Navbar /> */}
-      <div className="w-full flex-grow">{component}</div>
-      {/* <Footer /> */}
-    </>
-  );
+    return (
+        <>
+            <div className="w-full flex-grow h-screen">{component}</div>
+        </>
+    );
 };
 
 export default LoginWrapper;
