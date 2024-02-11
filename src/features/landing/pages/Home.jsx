@@ -5,7 +5,7 @@ const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="p-5">
+    <div className="flex flex-col">
       <Button>{t("general.jusoor")}</Button>
     </div>
   );

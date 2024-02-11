@@ -1,14 +1,19 @@
 /* eslint-disable react/prop-types */
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import "./wrapper.css";
 
 const Wrapper = ({ component }) => {
   return (
-    <>
-      <Navbar />
-      <div className="w-full flex-grow">{component}</div>
-      <Footer />
-    </>
+    <div className="wrapper">
+      <div className="flex">
+        <Navbar />
+        <div className="w-full flex-grow h-screen overflow-y-scroll ">
+          {component}
+        </div>
+      </div>
+      {/* <Footer /> */}
+    </div>
   );
 };
 
