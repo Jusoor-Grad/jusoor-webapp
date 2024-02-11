@@ -1,5 +1,12 @@
 {
   "general": {
     "jusoor": "جسور"
+  },
+  "patients": {
+    "scheduleAppointment": "احجز موعد",
+    "downloadData": "تحميل البيانات",
+    "patientsNumbers": "عدد المرضى",
+    "compareToLastMonth": "مقارنةً بالشهر السابق",
+    "filter": "تصفية"
   }
 }
