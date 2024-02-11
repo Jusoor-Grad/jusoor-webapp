@@ -15,7 +15,7 @@ const Register = () => {
   return (
     <div className="flex flex-row h-full">
       <div className="flex flex-col basis-full lg:basis-1/2 p-8">
-        <div className="flex flex-row   gap-2 justify-start items-center">
+        <div className="flex flex-row   gap-2 justify-start items-center cursor-pointer">
           <Avatar className="rounded-10">
             <AvatarImage src={jusoorLogo} alt="avatar" />
             <AvatarFallback>CN</AvatarFallback>
@@ -25,9 +25,9 @@ const Register = () => {
         <div className="flex flex-col flex-grow justify-center items-center">
           <div className="flex flex-col gap-8 w-11/12 sm:w-3/5">
             <div>
-              <p className="text-gray-900 font-bold text-4xl">
+              <h1 className="text-gray-900 font-bold text-4xl">
                 {t("login.registerNewAccountName")}
-              </p>{" "}
+              </h1>{" "}
               <p className="text-gray-500 text-lg">{t("login.loginIntro")}</p>
             </div>
             <div className="flex flex-col gap-6">

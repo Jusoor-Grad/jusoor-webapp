@@ -19,5 +19,12 @@
     "namePlaceholder": "ادخل اسمك",
     "doNotHaveAccount": "ليس لديك حساب؟",
     "signUp": "سجل الآن"
+  },
+  "patients": {
+    "scheduleAppointment": "احجز موعد",
+    "downloadData": "تحميل البيانات",
+    "patientsNumbers": "عدد المرضى",
+    "compareToLastMonth": "مقارنةً بالشهر السابق",
+    "filter": "تصفية"
   }
 }

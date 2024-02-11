@@ -32,10 +32,10 @@ const Navbar = () => {
       </Avatar>
       <div className="flex flex-col gap-2  items-center">
         <Icon
-          inPath={location.pathname === "/"}
+          inPath={location.pathname === "/dashboard"}
           filledIcon={<GoHomeFill className="h-6 w-6 text-white" />}
           outlinedIcon={<GoHome className="h-6 w-6 text-white" />}
-          navigateTo="/"
+          navigateTo="/dashboard"
         />
         <Icon
           inPath={location.pathname === "/appointments"}
@@ -50,12 +50,12 @@ const Navbar = () => {
           navigateTo="/patients"
         />
         <Icon
-          inPath={location.pathname === "/patients"}
+          inPath={location.pathname === "/surveys"}
           filledIcon={<IoDocumentText className="h-6 w-6 text-white" />}
           outlinedIcon={
             <IoDocumentTextOutline className="h-6 w-6 text-white" />
           }
-          navigateTo="/patients"
+          navigateTo="/surveys"
         />
       </div>
       <div className="flex flex-col gap-6 items-center">
@@ -83,6 +83,7 @@ const Navbar = () => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 const Icon = ({ inPath, filledIcon, outlinedIcon, navigateTo }) => {
   const navigate = useNavigate();
 

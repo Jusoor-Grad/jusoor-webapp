@@ -18,6 +18,7 @@ import AuthProtected from "./routes/AuthProtected";
 import LoginProtected from "./routes/LoginProtected";
 import { useDispatch } from "react-redux";
 import { flushAuth } from "./store/slices/auth";
+import Patients from "./features/patients/pages/Patients";
 
 const App = () => {
   //SECTION - Translation related
@@ -38,6 +39,12 @@ const App = () => {
       <Routes>
         <Route element={<AuthProtected />}>
           <Route path="/" element={<Wrapper component={<Home />} />} />
+        </Route>
+        <Route element={<AuthProtected />}>
+          <Route
+            path="/patients"
+            element={<Wrapper component={<Patients />} />}
+          />
         </Route>
         <Route element={<LoginProtected />}>
           <Route
