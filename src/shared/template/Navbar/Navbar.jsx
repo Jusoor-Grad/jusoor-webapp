@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import avatar from "../../../assets/avatarMockup.jpg";
-import jusoorLogo from "../../../assets/jusoor-logo.png";
+import avatar from "../../assets/images/avatarMockup.jpg";
+import jusoorLogo from "../../assets/images/jusoor-logo.png";
 import { GoHome, GoHomeFill } from "react-icons/go";
 import {
   IoCalendarOutline,

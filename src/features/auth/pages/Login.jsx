@@ -48,10 +48,10 @@ const Login = () => {
                 </div>
               </div>{" "}
               <div className="flex flex-col gap-2">
-                <Button className="bg-primary-500">
+                <Button>
                   <p className="font-bold">{t("login.login")}</p>
                 </Button>
-                <Button className="bg-primary-900">
+                <Button className="bg-primary-900 ">
                   {" "}
                   <div className="flex flex-row gap-2 items-center justify-center">
                     {" "}

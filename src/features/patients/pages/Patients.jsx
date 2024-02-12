@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { IoAdd, IoFilter } from "react-icons/io5";
 import StatisticsBox from "../components/StatisticsBox";
-import logoPattern from "../../../assets/Logo pattern.svg";
+import logoPattern from "../../../shared/assets/images/Logo pattern.svg";
 import { Input } from "@/components/ui/input";
 import { DatePickerWithRange } from "../components/DatePickerWithRange";
 
