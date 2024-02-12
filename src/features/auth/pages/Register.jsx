@@ -1,12 +1,13 @@
 import { useTranslation } from "react-i18next";
-import LoginScreenImage from "../../../shared/assets/images/LoginScreenImage.png";
+import RegisterScreenImage from "../../../shared/assets/images/RegisterScreenImage.svg";
 import jusoorLogo from "../../../shared/assets/images/jusoor-logo.png";
-import KFUPM from "../../../shared/assets/images/KFUPM.png";
-import { AvatarImage, Avatar, AvatarFallback } from "@/components/ui/avatar";
+import KFUPM from "../../../shared/assets/images/KFUPM.svg";
+import { AvatarImage, Avatar } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { HiOutlineMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import { Label } from "@/components/ui/label";
 
 const Register = () => {
   const { t } = useTranslation();
@@ -14,17 +15,27 @@ const Register = () => {
 
   return (
     <div className="flex flex-row h-full">
+      <div className="hidden lg:flex lg:basis-1/2">
+        <img
+          src={RegisterScreenImage}
+          alt="LoginScreenImage"
+          style={{
+            objectFit: "cover",
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      </div>
       <div className="flex flex-col basis-full lg:basis-1/2 p-8">
-        <div className="flex flex-row   gap-2 justify-start items-center cursor-pointer">
+        <div className="flex flex-row  gap-2 justify-start items-center cursor-pointer">
           <Avatar className="rounded-10">
             <AvatarImage src={jusoorLogo} alt="avatar" />
-            <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <p className="font-bold text-lg">{t("general.jusoor")}</p>
         </div>
         <div className="flex flex-col flex-grow justify-center items-center">
           <div className="flex flex-col gap-8 w-11/12 sm:w-3/5">
-            <div>
+            <div className="flex flex-col gap-3">
               <h1 className="text-gray-900 font-bold text-4xl">
                 {t("login.registerNewAccountName")}
               </h1>{" "}
@@ -33,34 +44,39 @@ const Register = () => {
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-5">
                 <div>
-                  <p className="font-bold">{t("login.name")}</p>
-                  <Input
-                    type="email"
-                    placeholder={t("login.namePlaceholder")}
-                  />
+                  <Label htmlFor="name" className="font-bold">
+                    {t("login.name")}
+                  </Label>
+                  <Input id="name" placeholder={t("login.namePlaceholder")} />
                 </div>
                 <div>
-                  <p className="font-bold">{t("login.email")}</p>
+                  <Label htmlFor="email" className="font-bold">
+                    {t("login.email")}
+                  </Label>
                   <Input
                     type="email"
+                    id="email"
                     placeholder={t("login.emailPlaceholder")}
                   />
                 </div>
                 <div>
-                  <p className="font-bold">{t("login.password")}</p>{" "}
+                  <Label htmlFor="password" className="font-bold">
+                    {t("login.password")}
+                  </Label>
                   <Input
-                    type="email"
+                    type="password"
+                    id="password"
                     placeholder={t("login.passwordPlaceholder")}
                   />
                 </div>
               </div>{" "}
               <div className="flex flex-col gap-2">
-                <Button className="bg-primary-500">
+                <Button>
                   <p className="font-bold">
                     {t("login.registerNewAccountAction")}
                   </p>
                 </Button>
-                <Button className="bg-primary-900">
+                <Button className="bg-primary-900 ">
                   {" "}
                   <div className="flex flex-row gap-2 items-center justify-center">
                     {" "}
@@ -89,17 +105,6 @@ const Register = () => {
           </div>
           <p className=" text-gray-500">{t("general.copyright")}</p>
         </div>
-      </div>
-      <div className="hidden lg:flex lg:basis-1/2">
-        <img
-          src={LoginScreenImage}
-          alt="LoginScreenImage"
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "100%",
-          }}
-        />
       </div>
     </div>
   );
