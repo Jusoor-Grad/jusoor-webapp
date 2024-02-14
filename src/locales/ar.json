@@ -25,6 +25,8 @@
     "downloadData": "تحميل البيانات",
     "patientsNumbers": "عدد المرضى",
     "compareToLastMonth": "مقارنةً بالشهر السابق",
-    "filter": "تصفية"
+    "filter": "تصفية",
+    "nextPage": "التالي",
+    "previousPage": "السابق"
   }
 }

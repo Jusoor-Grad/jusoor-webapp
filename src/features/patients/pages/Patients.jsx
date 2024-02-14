@@ -5,6 +5,7 @@ import StatisticsBox from "../components/StatisticsBox";
 import logoPattern from "../../../shared/assets/images/Logo pattern.svg";
 import { Input } from "@/components/ui/input";
 import { DatePickerWithRange } from "../components/DatePickerWithRange";
+import { DataTableDemo } from "../components/DataTable";
 
 const Patients = () => {
   const { t } = useTranslation();
@@ -45,7 +46,10 @@ const Patients = () => {
             <IoFilter className="w-5 h-5" />
           </Button>
         </div>
-        <div>{/* //TODO - Data Table */}</div>
+        <div>
+          {/* //TODO - Data Table */}
+          <DataTableDemo />
+        </div>
       </section>
     </main>
   );
