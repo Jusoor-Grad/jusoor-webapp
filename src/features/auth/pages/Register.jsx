@@ -10,8 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import * as EmailValidator from "email-validator";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from "@/store/slices/auth";
+import { CircularProgress } from "@nextui-org/react";
 
 const Register = () => {
   //SECTION - general
@@ -26,6 +27,11 @@ const Register = () => {
     password: "",
   });
   const [isEmailValid, setIsEmailValid] = useState(true); // Track email validity state
+
+  //SECTION - useSelector
+  const registerStatus = useSelector(
+    (state) => state.authReducer.registerStatus
+  );
 
   //SECTION - functions
   const handleChange = (event) => {
@@ -75,54 +81,78 @@ const Register = () => {
           <div className="flex flex-col gap-8 w-11/12 sm:w-3/5">
             <div className="flex flex-col gap-3">
               <h1 className="text-gray-900 font-bold text-4xl">
-                {t("login.registerNewAccountName")}
+                {t("auth.registerNewAccountName")}
               </h1>{" "}
-              <p className="text-gray-500 text-lg">{t("login.loginIntro")}</p>
+              <p className="text-gray-500 text-lg">{t("auth.loginIntro")}</p>
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="name" className="font-bold">
-                    {t("login.name")}
+                    {t("auth.name")}
                   </Label>
                   <Input
                     id="name"
                     name="name"
-                    placeholder={t("login.namePlaceholder")}
+                    placeholder={t("auth.namePlaceholder")}
                     value={registerInformation.name}
                     onChange={handleChange}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      registerInformation.name &&
+                      registerInformation.email &&
+                      isEmailValid &&
+                      registerInformation.password &&
+                      handleSubmit()
+                    }
                   />
                 </div>
                 <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="email" className="font-bold">
-                    {t("login.email")}
+                    {t("auth.email")}
                   </Label>
                   <Input
                     type="email"
                     name="email"
                     id="email"
-                    placeholder={t("login.emailPlaceholder")}
+                    placeholder={t("auth.emailPlaceholder")}
                     onChange={handleChange}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      registerInformation.name &&
+                      registerInformation.email &&
+                      isEmailValid &&
+                      registerInformation.password &&
+                      handleSubmit()
+                    }
                   />
                   {!isEmailValid && (
                     <Label
                       className=" font-bold text-error-500"
                       style={{ gap: "6px" }}
                     >
-                      {t("login.invalidEmailError")}
+                      {t("auth.invalidEmailError")}
                     </Label>
                   )}
                 </div>
                 <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="password" className="font-bold">
-                    {t("login.password")}
+                    {t("auth.password")}
                   </Label>
                   <Input
                     type="password"
                     name="password"
                     id="password"
-                    placeholder={t("login.passwordPlaceholder")}
+                    placeholder={t("auth.passwordPlaceholder")}
                     onChange={handleChange}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      registerInformation.name &&
+                      registerInformation.email &&
+                      isEmailValid &&
+                      registerInformation.password &&
+                      handleSubmit()
+                    }
                   />
                 </div>
               </div>{" "}
@@ -135,28 +165,32 @@ const Register = () => {
                   }
                   onClick={handleSubmit}
                 >
-                  <p className="font-bold">
-                    {t("login.registerNewAccountAction")}
-                  </p>
+                  {registerStatus === "loading" ? (
+                    <CircularProgress size="sm" aria-label="Loading..." />
+                  ) : (
+                    <p className="font-bold">
+                      {t("auth.registerNewAccountAction")}
+                    </p>
+                  )}
                 </Button>
                 <Button className="bg-primary-900 ">
                   {" "}
                   <div className="flex flex-row gap-2 items-center justify-center">
                     {" "}
                     <img src={KFUPM} alt="KFUPM" />
-                    <p className="font-bold">{t("login.loginViaKFUPM")}</p>
+                    <p className="font-bold">{t("auth.loginViaKFUPM")}</p>
                   </div>
                 </Button>
               </div>
             </div>
 
             <div className="flex flex-row gap-2 justify-center">
-              <p className="text-gray-500">{t("login.alreadyHaveAccount")}</p>{" "}
+              <p className="text-gray-500">{t("auth.alreadyHaveAccount")}</p>{" "}
               <p
                 className="text-primary-700 underline cursor-pointer"
                 onClick={() => navigate("/login")}
               >
-                {t("login.login")}
+                {t("auth.login")}
               </p>
             </div>
           </div>{" "}

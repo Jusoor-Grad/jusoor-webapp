@@ -6,7 +6,7 @@ import axios from "axios";
 
 const initialState = {
   loginStatus: "idle",
-  logOutStatus: "idle",
+  logoutStatus: "idle",
   registerStatus: "idle",
 };
 export const register = createAsyncThunk(
@@ -86,13 +86,13 @@ export const authSlice = createSlice({
       state.loginStatus = "failed";
     });
     builder.addCase(logout.fulfilled, (state, action) => {
-      state.logOutStatus = "succeeded";
+      state.logoutStatus = "succeeded";
     });
     builder.addCase(logout.pending, (state, action) => {
-      state.logOutStatus = "loading";
+      state.logoutStatus = "loading";
     });
     builder.addCase(logout.rejected, (state, action) => {
-      state.logOutStatus = "failed";
+      state.logoutStatus = "failed";
     });
     builder.addCase(register.fulfilled, (state, action) => {
       state.registerStatus = "succeeded";

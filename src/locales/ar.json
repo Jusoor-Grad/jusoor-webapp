@@ -4,7 +4,7 @@
     "support": "support@jusoor.com",
     "copyright": "© جسور 2024"
   },
-  "login": {
+  "auth": {
     "login": "تسجيل الدخول",
     "loginIntro": "حياك الله في مجلس ما فيه نفس ثقيلة",
     "email": "الايميل",
@@ -19,7 +19,8 @@
     "namePlaceholder": "ادخل اسمك",
     "doNotHaveAccount": "ليس لديك حساب؟",
     "signUp": "سجل الآن",
-    "invalidEmailError": "الرجاء التأكد من صحة البريد البريد الإلكتروني"
+    "invalidEmailError": "الرجاء التأكد من صحة البريد البريد الإلكتروني",
+    "logout": "تسجيل الخروج"
   },
   "patients": {
     "scheduleAppointment": "احجز موعد",

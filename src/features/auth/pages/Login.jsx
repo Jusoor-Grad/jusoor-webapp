@@ -10,8 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { login } from "@/store/slices/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as EmailValidator from "email-validator";
+import { CircularProgress } from "@nextui-org/react";
 
 const Login = () => {
   //SECTION - general
@@ -25,6 +26,9 @@ const Login = () => {
     password: "",
   });
   const [isEmailValid, setIsEmailValid] = useState(true); // Track email validity state
+
+  //SECTION - useSelector
+  const loginStatus = useSelector((state) => state.authReducer.loginStatus);
 
   //SECTION - functions
   const handleChange = (event) => {
@@ -54,49 +58,63 @@ const Login = () => {
         <div className="flex flex-row  gap-2 justify-start items-center cursor-pointer">
           <Avatar className="rounded-10">
             <AvatarImage src={jusoorLogo} alt="avatar" />
-          </Avatar>
+          </Avatar>{" "}
           <p className="font-bold text-lg">{t("general.jusoor")}</p>
         </div>
         <div className="flex flex-col flex-grow justify-center items-center">
           <div className="flex flex-col gap-8 w-11/12 sm:w-3/5">
             <div className="flex flex-col gap-3">
               <h1 className="text-gray-900 font-bold text-4xl">
-                {t("login.login")}
+                {t("auth.login")}
               </h1>{" "}
-              <p className="text-gray-500 text-lg">{t("login.loginIntro")}</p>
+              <p className="text-gray-500 text-lg">{t("auth.loginIntro")}</p>
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-5">
                 <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="email" className="font-bold">
-                    {t("login.email")}
+                    {t("auth.email")}
                   </Label>
                   <Input
                     type="email"
                     name="email"
                     id="email"
-                    placeholder={t("login.emailPlaceholder")}
+                    placeholder={t("auth.emailPlaceholder")}
                     onChange={handleChange}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      loginInformation.email &&
+                      isEmailValid &&
+                      loginInformation.password &&
+                      handleSubmit()
+                    }
                   />
                   {!isEmailValid && (
                     <Label
                       className=" font-bold text-error-500"
                       style={{ gap: "6px" }}
                     >
-                      {t("login.invalidEmailError")}
+                      {t("auth.invalidEmailError")}
                     </Label>
                   )}
                 </div>
                 <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="password" className="font-bold">
-                    {t("login.password")}
+                    {t("auth.password")}
                   </Label>
                   <Input
                     type="password"
                     id="password"
                     name="password"
-                    placeholder={t("login.passwordPlaceholder")}
+                    placeholder={t("auth.passwordPlaceholder")}
                     onChange={handleChange}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      loginInformation.email &&
+                      isEmailValid &&
+                      loginInformation.password &&
+                      handleSubmit()
+                    }
                   />
                 </div>
               </div>{" "}
@@ -105,26 +123,30 @@ const Login = () => {
                   onClick={handleSubmit}
                   disabled={loginInformation.password === "" || !isEmailValid}
                 >
-                  <p className="font-bold">{t("login.login")}</p>
+                  {loginStatus === "loading" ? (
+                    <CircularProgress size="sm" aria-label="Loading..." />
+                  ) : (
+                    <p className="font-bold">{t("auth.login")}</p>
+                  )}
                 </Button>
                 <Button className="bg-primary-900 ">
                   {" "}
                   <div className="flex flex-row gap-2 items-center justify-center">
                     {" "}
                     <img src={KFUPM} alt="KFUPM" />
-                    <p className="font-bold">{t("login.loginViaKFUPM")}</p>
+                    <p className="font-bold">{t("auth.loginViaKFUPM")}</p>
                   </div>
                 </Button>
               </div>
             </div>
 
             <div className="flex flex-row gap-2 justify-center">
-              <p className="text-gray-500">{t("login.doNotHaveAccount")}</p>{" "}
+              <p className="text-gray-500">{t("auth.doNotHaveAccount")}</p>{" "}
               <p
                 className="text-primary-700 underline cursor-pointer"
                 onClick={() => navigate("/register")}
               >
-                {t("login.signUp")}
+                {t("auth.signUp")}
               </p>
             </div>
           </div>{" "}
