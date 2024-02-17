@@ -3,12 +3,11 @@ import axios from "axios";
 // import i18n from "../../i18n";
 
 // Create a function that generates an Axios instance with interceptors
-const createAxiosInstance = (baseURL) => {
+const createAxiosInstance = () => {
   const instance = axios.create({
-    baseURL: baseURL,
+    baseURL: `${import.meta.env.VITE_BACKEND_URL}`,
     timeout: 30000,
   });
-
   // Add a request interceptor
   instance.interceptors.request.use(
     (config) => {
@@ -75,7 +74,7 @@ const createAxiosInstance = (baseURL) => {
         //   window.location.href = "/error/500";
         //   break;
         default:
-          window.location.href = `/error/${error.response.status}`;
+        // window.location.href = `/error/${error.response.status}`;
       }
 
       return error.response;
@@ -85,8 +84,4 @@ const createAxiosInstance = (baseURL) => {
   return instance;
 };
 
-const axiosInstance = createAxiosInstance(
-  import.meta.env.MODE.REACT_APP_BACKEND_URL
-);
-
-export { axiosInstance };
+export const axiosInstance = createAxiosInstance();

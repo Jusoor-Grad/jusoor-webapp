@@ -8,11 +8,46 @@ import { Button } from "@/components/ui/button";
 import { HiOutlineMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { login } from "@/store/slices/auth";
+import { useDispatch } from "react-redux";
+import * as EmailValidator from "email-validator";
 
 const Login = () => {
+  //SECTION - general
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  //SECTION - useState
+  const [loginInformation, setLoginInformation] = useState({
+    email: "",
+    password: "",
+  });
+  const [isEmailValid, setIsEmailValid] = useState(true); // Track email validity state
+
+  //SECTION - functions
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setLoginInformation((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (name === "email") {
+      setIsEmailValid(EmailValidator.validate(value)); // Validate email on change
+    }
+  };
+  const handleSubmit = () => {
+    dispatch(login(loginInformation)).then((payload) => {
+      if (payload.type === "auth/login/fulfilled") {
+        navigate("/dashboard");
+      } else {
+        //TODO - failure
+      }
+    });
+  };
   return (
     <div className="flex flex-row h-full">
       <div className="flex flex-col basis-full lg:basis-1/2 p-8">
@@ -32,29 +67,44 @@ const Login = () => {
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-5">
-                <div>
+                <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="email" className="font-bold">
                     {t("login.email")}
                   </Label>
                   <Input
                     type="email"
+                    name="email"
                     id="email"
                     placeholder={t("login.emailPlaceholder")}
+                    onChange={handleChange}
                   />
+                  {!isEmailValid && (
+                    <Label
+                      className=" font-bold text-error-500"
+                      style={{ gap: "6px" }}
+                    >
+                      {t("login.invalidEmailError")}
+                    </Label>
+                  )}
                 </div>
-                <div>
+                <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="password" className="font-bold">
                     {t("login.password")}
                   </Label>
                   <Input
                     type="password"
                     id="password"
+                    name="password"
                     placeholder={t("login.passwordPlaceholder")}
+                    onChange={handleChange}
                   />
                 </div>
               </div>{" "}
               <div className="flex flex-col gap-2">
-                <Button>
+                <Button
+                  onClick={handleSubmit}
+                  disabled={loginInformation.password === "" || !isEmailValid}
+                >
                   <p className="font-bold">{t("login.login")}</p>
                 </Button>
                 <Button className="bg-primary-900 ">

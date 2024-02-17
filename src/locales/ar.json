@@ -18,7 +18,8 @@
     "name": "الاسم",
     "namePlaceholder": "ادخل اسمك",
     "doNotHaveAccount": "ليس لديك حساب؟",
-    "signUp": "سجل الآن"
+    "signUp": "سجل الآن",
+    "invalidEmailError": "الرجاء التأكد من صحة البريد البريد الإلكتروني"
   },
   "patients": {
     "scheduleAppointment": "احجز موعد",

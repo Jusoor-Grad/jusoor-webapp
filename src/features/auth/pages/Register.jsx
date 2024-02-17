@@ -8,10 +8,48 @@ import { Button } from "@/components/ui/button";
 import { HiOutlineMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import * as EmailValidator from "email-validator";
+import { useDispatch } from "react-redux";
+import { register } from "@/store/slices/auth";
 
 const Register = () => {
+  //SECTION - general
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  //SECTION - useState
+  const [registerInformation, setRegisterInformation] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [isEmailValid, setIsEmailValid] = useState(true); // Track email validity state
+
+  //SECTION - functions
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setRegisterInformation((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (name === "email") {
+      setIsEmailValid(EmailValidator.validate(value)); // Validate email on change
+    }
+  };
+  const handleSubmit = () => {
+    dispatch(register(registerInformation)).then((payload) => {
+      console.warn("payload", payload);
+      if (payload.type === "auth/register/fulfilled") {
+        navigate("/dashboard");
+      } else {
+        //TODO - failure
+      }
+    });
+  };
 
   return (
     <div className="flex flex-row h-full">
@@ -43,35 +81,60 @@ const Register = () => {
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-5">
-                <div>
+                <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="name" className="font-bold">
                     {t("login.name")}
                   </Label>
-                  <Input id="name" placeholder={t("login.namePlaceholder")} />
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder={t("login.namePlaceholder")}
+                    value={registerInformation.name}
+                    onChange={handleChange}
+                  />
                 </div>
-                <div>
+                <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="email" className="font-bold">
                     {t("login.email")}
                   </Label>
                   <Input
                     type="email"
+                    name="email"
                     id="email"
                     placeholder={t("login.emailPlaceholder")}
+                    onChange={handleChange}
                   />
+                  {!isEmailValid && (
+                    <Label
+                      className=" font-bold text-error-500"
+                      style={{ gap: "6px" }}
+                    >
+                      {t("login.invalidEmailError")}
+                    </Label>
+                  )}
                 </div>
-                <div>
+                <div className="flex flex-col" style={{ gap: "6px" }}>
                   <Label htmlFor="password" className="font-bold">
                     {t("login.password")}
                   </Label>
                   <Input
                     type="password"
+                    name="password"
                     id="password"
                     placeholder={t("login.passwordPlaceholder")}
+                    onChange={handleChange}
                   />
                 </div>
               </div>{" "}
               <div className="flex flex-col gap-2">
-                <Button>
+                <Button
+                  disabled={
+                    registerInformation.name === "" ||
+                    registerInformation.password === "" ||
+                    !isEmailValid
+                  }
+                  onClick={handleSubmit}
+                >
                   <p className="font-bold">
                     {t("login.registerNewAccountAction")}
                   </p>

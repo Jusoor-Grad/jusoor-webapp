@@ -1,47 +1,70 @@
 /* eslint-disable no-unused-vars */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import { axiosInstance } from "@/shared/api/axiosConfig";
+import { axiosInstance } from "@/shared/api/axiosConfig";
 import i18n from "../../i18n";
+import axios from "axios";
 
 const initialState = {
   loginStatus: "idle",
   logOutStatus: "idle",
+  registerStatus: "idle",
 };
+export const register = createAsyncThunk(
+  "auth/register",
+  async (data, thunkAPI) => {
+    const response = await axiosInstance.post(
+      `auth/signup/`,
+      {
+        email: data.email,
+        username: data.name,
+        password: data.password,
+      },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (response.status < 200 || response.status >= 300) {
+      return thunkAPI.rejectWithValue(response.data);
+    } else {
+      return response.data;
+    }
+  }
+);
 export const login = createAsyncThunk("auth/login", async (data, thunkAPI) => {
-  // const response = await axiosInstance.post(
-  //   "login",
-  //   {
-  //     phone: data.phone,
-  //     password: data.password,
-  //     app: "OfRwQiI=",
-  //     grand_type: "password",
-  //   },
-  //   {
-  //     headers: { "Content-Type": "application/json" },
-  //   }
-  // );
-  // if (response.status < 200 || response.status >= 300) {
-  //   return thunkAPI.rejectWithValue(response.data); // Use rejectWithValue here
-  // } else {
-  //   return response.data;
-  // }
+  const response = await axiosInstance.post(
+    "auth/login/",
+    {
+      email: data.email,
+      password: data.password,
+    },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  if (response.status < 200 || response.status >= 300) {
+    return thunkAPI.rejectWithValue(response.data); // Use rejectWithValue here
+  } else {
+    return response.data;
+  }
 });
 
-export const logout = createAsyncThunk("auth/logout", async (data) => {
-  // const response = await axiosInstance.post(
-  //   "logout",
-  //   {
-  //   },
-  //   {
-  //     headers: { "Content-Type": "application/json" },
-  //   }
-  // );
-  // if (response.status < 200 || response.status >= 300) {
-  //   return thunkAPI.rejectWithValue(response.data); // Use rejectWithValue here
-  // } else {
-  //   return response.data;
-  // }
-});
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (data, thunkAPI) => {
+    const response = await axiosInstance.post(
+      "auth/logout/",
+      {},
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (response.status < 200 || response.status >= 300) {
+      return thunkAPI.rejectWithValue(response.data); // Use rejectWithValue here
+    } else {
+      return response.data;
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -54,7 +77,7 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       state.loginStatus = "succeeded";
-      localStorage.setItem("accessToken", action.payload.access_token);
+      localStorage.setItem("accessToken", action.payload.data.access);
     });
     builder.addCase(login.pending, (state, action) => {
       state.loginStatus = "loading";
@@ -70,6 +93,16 @@ export const authSlice = createSlice({
     });
     builder.addCase(logout.rejected, (state, action) => {
       state.logOutStatus = "failed";
+    });
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.registerStatus = "succeeded";
+      localStorage.setItem("accessToken", action.payload.data.access);
+    });
+    builder.addCase(register.pending, (state, action) => {
+      state.registerStatus = "loading";
+    });
+    builder.addCase(register.rejected, (state, action) => {
+      state.registerStatus = "failed";
     });
   },
 });

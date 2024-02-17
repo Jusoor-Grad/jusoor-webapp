@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 const logger = (store) => (next) => (action) => {
-  if (import.meta.env.MODE !== "production") {
+  if (import.meta.env.VITE_MODE !== "production") {
     console.group(action.type);
     console.log("The action is ", action);
   }
