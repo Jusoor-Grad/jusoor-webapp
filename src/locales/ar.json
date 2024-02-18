@@ -23,12 +23,15 @@
     "logout": "تسجيل الخروج"
   },
   "patients": {
-    "scheduleAppointment": "احجز موعد",
+    "bookAppointment": "احجز موعد",
     "downloadData": "تحميل البيانات",
     "patientsNumbers": "عدد المرضى",
     "compareToLastMonth": "مقارنةً بالشهر السابق",
     "filter": "تصفية",
     "nextPage": "التالي",
-    "previousPage": "السابق"
+    "previousPage": "السابق",
+    "chooseTimeAndPerson": "اختر الوقت والشخص المناسب",
+    "approve": "تأكيد",
+    "cancel": "الغاء"
   }
 }

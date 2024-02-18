@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
-import { IoAdd, IoFilter } from "react-icons/io5";
+import { IoFilter } from "react-icons/io5";
 import StatisticsBox from "../components/StatisticsBox";
 import logoPattern from "../../../shared/assets/images/Logo pattern.svg";
 import { Input } from "@/components/ui/input";
 import { DatePickerWithRange } from "../components/DatePickerWithRange";
-import { DataTableDemo } from "../components/DataTable";
+import { DataTable } from "../components/DataTable";
+import { AppointmentModalButton } from "../components/AppointmentModalButton";
 
 const Patients = () => {
   const { t } = useTranslation();
@@ -23,9 +24,7 @@ const Patients = () => {
           </p>
         </div>
         <div className="flex gap-4">
-          <Button className="gap-3">
-            <IoAdd className="w-5 h-5" /> {t("patients.scheduleAppointment")}
-          </Button>
+          <AppointmentModalButton />
           <Button variant="outline">{t("patients.downloadData")}</Button>
         </div>
       </section>
@@ -47,8 +46,7 @@ const Patients = () => {
           </Button>
         </div>
         <div>
-          {/* //TODO - Data Table */}
-          <DataTableDemo />
+          <DataTable />
         </div>
       </section>
     </main>

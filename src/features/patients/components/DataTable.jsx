@@ -152,7 +152,7 @@ export const columns = [
   },
 ];
 
-export function DataTableDemo() {
+export function DataTable() {
   const { t } = useTranslation();
   const [sorting, setSorting] = React.useState();
   const [columnFilters, setColumnFilters] = React.useState();
