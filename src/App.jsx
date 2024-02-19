@@ -13,11 +13,11 @@ import LoginProtected from "./routes/LoginProtected";
 
 //SECTION - PAGES
 import Booking from "./features/booking/pages/Booking";
-import Home from "./features/landing/pages/Home";
 import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 import Patients from "./features/patients/pages/Patients";
 import Dashboard from "./features/dashboard/pages/Dashboard";
+import SpecificPatient from "./features/patients/pages/SpecificPatient";
 
 const App = () => {
   //SECTION - Translation related
@@ -38,6 +38,10 @@ const App = () => {
           <Route
             path="/patients"
             element={<Wrapper component={<Patients />} />}
+          />
+          <Route
+            path="/patients/:id"
+            element={<Wrapper component={<SpecificPatient />} />}
           />
           <Route
             path="/dashboard"

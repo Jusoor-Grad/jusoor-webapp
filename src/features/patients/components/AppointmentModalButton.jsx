@@ -4,6 +4,7 @@ import FeaturedIcon from "@/shared/components/FeaturedIcon";
 import { Calendar } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { IoAdd } from "react-icons/io5";
+import { DropdownRadioGroup } from "./DropdownRadioGroup";
 
 export function AppointmentModalButton() {
   const { t } = useTranslation();
@@ -27,7 +28,9 @@ export function AppointmentModalButton() {
               {t("patients.chooseTimeAndPerson")}
             </p>
           </div>
-          <div className="flex flex-col gap-4 w-full "></div>
+          <div className="flex flex-col gap-4 w-full ">
+            <DropdownRadioGroup />
+          </div>
         </div>
         <div className="flex gap-4 w-full">
           <Button className="w-full">{t("patients.approve")}</Button>

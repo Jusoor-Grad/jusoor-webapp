@@ -32,6 +32,10 @@
     "previousPage": "السابق",
     "chooseTimeAndPerson": "اختر الوقت والشخص المناسب",
     "approve": "تأكيد",
-    "cancel": "الغاء"
+    "cancel": "الغاء",
+    "requestChats": "طلب عرض المحادثات",
+    "appointments": "المواعيد",
+    "generalStats": "إحصائيات عامة",
+    "latestUpdates": "آخر الاحداث"
   }
 }
