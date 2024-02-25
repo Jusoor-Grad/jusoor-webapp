@@ -37,35 +37,45 @@ import {
 } from "@/components/ui/table";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   {
     id: "m5gr84i9",
     amount: 316,
+    name: "مجد بيازيد",
     status: "success",
     email: "ken99@yahoo.com",
   },
   {
     id: "3u1reuv4",
     amount: 242,
+    name: "مجد بيازيد",
+
     status: "success",
     email: "Abe45@gmail.com",
   },
   {
     id: "derv1ws0",
     amount: 837,
+    name: "مجد بيازيد",
+
     status: "processing",
     email: "Monserrat44@gmail.com",
   },
   {
     id: "5kma53ae",
     amount: 874,
+    name: "مجد بيازيد",
+
     status: "success",
     email: "Silas22@gmail.com",
   },
   {
     id: "bhqecj4p",
     amount: 721,
+    name: "مجد بيازيد",
+
     status: "failed",
     email: "carmella@hotmail.com",
   },
@@ -93,6 +103,28 @@ export const columns = [
     ),
     enableSorting: false,
     enableHiding: false,
+  },
+  {
+    accessorKey: "name",
+    header: () => <p>Name</p>,
+    cell: ({ row }) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const navigate = useNavigate(); // Initialize useNavigate
+
+      const handleClick = () => {
+        navigate(`/patients/${row.original.id}`); // Navigate to /patients/:id
+      };
+
+      return (
+        <a
+          onClick={handleClick}
+          className="underline"
+          style={{ cursor: "pointer" }}
+        >
+          {row.original.name}
+        </a>
+      );
+    },
   },
   {
     accessorKey: "status",

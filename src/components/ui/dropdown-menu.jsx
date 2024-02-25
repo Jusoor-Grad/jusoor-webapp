@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
-
+import i18n from "@/i18n";
 import { cn } from "@/lib/utils";
 import { IoCheckmark } from "react-icons/io5";
 
@@ -113,12 +113,18 @@ const DropdownMenuRadioItem = React.forwardRef(
     <DropdownMenuPrimitive.RadioItem
       ref={ref}
       className={cn(
-        "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        `relative flex cursor-default ${
+          i18n.language === "ar" ? "flex-row" : "flex-row-reverse"
+        }  select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50`,
         className
       )}
       {...props}
     >
-      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <span
+        className={`absolute ${
+          i18n.language === "ar" ? "left-2" : "right-2"
+        } flex h-3.5 w-3.5 items-center justify-center`}
+      >
         <DropdownMenuPrimitive.ItemIndicator>
           <IoCheckmark className="text-primary-500" />
         </DropdownMenuPrimitive.ItemIndicator>

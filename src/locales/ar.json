@@ -36,6 +36,12 @@
     "requestChats": "طلب عرض المحادثات",
     "appointments": "المواعيد",
     "generalStats": "إحصائيات عامة",
-    "latestUpdates": "آخر الاحداث"
+    "latestUpdates": "آخر الاحداث",
+    "choosePatient": "اختر المريض",
+    "patients": "المرضى",
+    "date": "التاريخ",
+    "time": "الوقت",
+    "screeningSurvey": "الاستبيان القبلي",
+    "choose": "اختر"
   }
 }

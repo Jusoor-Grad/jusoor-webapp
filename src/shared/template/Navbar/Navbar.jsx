@@ -11,16 +11,17 @@ import {
   IoDocumentText,
   IoSettings,
   IoSettingsOutline,
-  IoHelpBuoy,
-  IoHelpBuoyOutline,
+  IoGlobeOutline,
 } from "react-icons/io5";
 import { Separator } from "@/components/ui/separator";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const { i18n } = useTranslation();
   return (
     <div className=" bg-primary-900  h-screen p-4 flex justify-between flex-col items-center ">
       <Avatar
@@ -60,12 +61,32 @@ const Navbar = () => {
       </div>
       <div className="flex flex-col gap-6 items-center">
         <div className="flex flex-col gap-2 ">
-          <Icon
+          {/* <Icon
             inPath={location.pathname === "/help"}
             filledIcon={<IoHelpBuoy className="h-6 w-6 text-white" />}
             outlinedIcon={<IoHelpBuoyOutline className="h-6 w-6 text-white" />}
             navigateTo="/help"
-          />
+          /> */}
+          <div
+            className={"p-3 rounded-15 hover:bg-primary-700 cursor-pointer"}
+            // onClick={() => navigate(navigateTo)}
+            onClick={() => {
+              if (localStorage.getItem("i18nextLng")) {
+                if (i18n.language === "ar") {
+                  i18n.changeLanguage("en");
+                  localStorage.setItem("i18nextLng", "en");
+                } else {
+                  i18n.changeLanguage("ar");
+                  localStorage.setItem("i18nextLng", "ar");
+                }
+              } else {
+                i18n.changeLanguage("en");
+                localStorage.setItem("i18nextLng", "en");
+              }
+            }}
+          >
+            <IoGlobeOutline className="h-6 w-6 text-white" />
+          </div>
           <Icon
             inPath={location.pathname === "/settings"}
             filledIcon={<IoSettings className="h-6 w-6 text-white" />}
