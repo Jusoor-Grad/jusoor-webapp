@@ -46,5 +46,12 @@
     "patientsPage": "صفحة المرضى",
     "pageDescription": "اطلّع على اخر مستجدات المرضى وابق على تواصل معهم...",
     "search": "البحث..."
+  },
+  "appointments": {
+    "appointmentsPage": "صفحة المواعيد",
+    "pageDescription": "اطلّع على جميع المواعيد السابقه بكل سهولة...",
+    "workingHours": "ساعات العمل",
+    "calendar": "التقويم",
+    "appointments": "المواعيد"
   }
 }

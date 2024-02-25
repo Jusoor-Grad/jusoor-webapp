@@ -18,6 +18,7 @@ import Register from "./features/auth/pages/Register";
 import Patients from "./features/patients/pages/Patients";
 import Dashboard from "./features/dashboard/pages/Dashboard";
 import SpecificPatient from "./features/patients/pages/SpecificPatient";
+import Appointments from "./features/patients/pages/Appointments";
 
 const App = () => {
   //SECTION - Translation related
@@ -46,6 +47,10 @@ const App = () => {
           <Route
             path="/dashboard"
             element={<Wrapper component={<Dashboard />} />}
+          />
+          <Route
+            path="/appointments"
+            element={<Wrapper component={<Appointments />} />}
           />
         </Route>
         <Route element={<LoginProtected />}>

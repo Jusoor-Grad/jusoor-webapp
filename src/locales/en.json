@@ -46,5 +46,12 @@
     "patientsPage": "Patients Page",
     "pageDescription": "Check out the latest updates about patients and stay connected with them...",
     "search": "Search..."
+  },
+  "appointments": {
+    "appointmentsPage": "Appointments Page",
+    "pageDescription": "Easily access all previous appointments...",
+    "workingHours": "Working hours",
+    "calendar": "Calendar",
+    "appointments": "Appointments"
   }
 }
