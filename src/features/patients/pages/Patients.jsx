@@ -18,9 +18,9 @@ const Patients = () => {
       </div>
       <section className="flex justify-between text-center items-center">
         <div className="flex flex-col items-start gap-1">
-          <h1 className="text-4xl font-bold">صفحة المرضى</h1>
+          <h1 className="text-4xl font-bold">{t("patients.patientsPage")}</h1>
           <p className=" text-gray-500 text-xl ">
-            اطلّع على اخر مستجدات المرضى وابق على تواصل معهم...
+            {t("patients.pageDescription")}
           </p>
         </div>
         <div className="flex gap-4">
@@ -36,7 +36,7 @@ const Patients = () => {
       <section className="flex flex-col gap-6 ">
         <div className="flex gap-4 w-fit">
           <Input
-            placeholder={"البحث..."}
+            placeholder={t("patients.search")}
             className="border-gray-300 w-[400px]"
           />
           <DatePickerWithRange />

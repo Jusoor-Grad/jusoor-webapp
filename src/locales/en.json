@@ -2,6 +2,49 @@
   "general": {
     "jusoor": "Jusoor",
     "support": "support@jusoor.com",
-    "copyright": "@ Jusoor 2024"
+    "copyright": "© Jusoor 2024"
+  },
+  "auth": {
+    "login": "Login",
+    "loginIntro": "Welcome to a community where burdens are lighter",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "*******",
+    "loginViaKFUPM": "Login via University",
+    "alreadyHaveAccount": "Already have an account?",
+    "registerNewAccountName": "Register New Account",
+    "registerNewAccountAction": "Register New Account",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+    "doNotHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "invalidEmailError": "Please make sure your email is valid",
+    "logout": "Logout"
+  },
+  "patients": {
+    "bookAppointment": "Book Appointment",
+    "downloadData": "Download Data",
+    "patientsNumbers": "Number of Patients",
+    "compareToLastMonth": "Compared to Last Month",
+    "filter": "Filter",
+    "nextPage": "Next",
+    "previousPage": "Previous",
+    "chooseTimeAndPerson": "Choose Time and Person",
+    "approve": "Approve",
+    "cancel": "Cancel",
+    "requestChats": "Request Chat Records",
+    "appointments": "Appointments",
+    "generalStats": "General Statistics",
+    "latestUpdates": "Latest Updates",
+    "choosePatient": "Choose Patient",
+    "patients": "Patients",
+    "date": "Date",
+    "time": "Time",
+    "screeningSurvey": "Pre-Screening Survey",
+    "choose": "Choose",
+    "patientsPage": "Patients Page",
+    "pageDescription": "Check out the latest updates about patients and stay connected with them...",
+    "search": "Search..."
   }
 }
