@@ -4,6 +4,14 @@
     "support": "support@jusoor.com",
     "copyright": "© Jusoor 2024"
   },
+  "navbar": {
+    "dashboard": "Dashboard",
+    "patients": "Patients",
+    "appointments": "Appointments",
+    "surveys": "Surveys",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
   "auth": {
     "login": "Login",
     "loginIntro": "Welcome to a community where burdens are lighter",

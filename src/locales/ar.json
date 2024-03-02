@@ -4,6 +4,14 @@
     "support": "support@jusoor.com",
     "copyright": "© جسور 2024"
   },
+  "navbar": {
+    "dashboard": "لوحة القيادة",
+    "patients": "المراجعين",
+    "appointments": "المواعيد",
+    "surveys": "الاستبيانات",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج"
+  },
   "auth": {
     "login": "تسجيل الدخول",
     "loginIntro": "حياك الله في مجلس ما فيه نفس ثقيلة",
