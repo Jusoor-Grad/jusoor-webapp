@@ -78,6 +78,7 @@ export const authSlice = createSlice({
     builder.addCase(login.fulfilled, (state, action) => {
       state.loginStatus = "succeeded";
       localStorage.setItem("accessToken", action.payload.data.access);
+      localStorage.setItem("refreshToken", action.payload.data.refresh);
     });
     builder.addCase(login.pending, (state, action) => {
       state.loginStatus = "loading";

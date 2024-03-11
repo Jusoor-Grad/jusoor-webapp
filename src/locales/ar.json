@@ -53,7 +53,11 @@
     "choose": "اختر",
     "patientsPage": "صفحة المرضى",
     "pageDescription": "اطلّع على اخر مستجدات المرضى وابق على تواصل معهم...",
-    "search": "البحث..."
+    "search": "البحث...",
+    "id": "رقم التعريف",
+    "username": "اسم المريض",
+    "email": "البريد الإلكتروني",
+    "department": "القسم"
   },
   "appointments": {
     "appointmentsPage": "صفحة المواعيد",

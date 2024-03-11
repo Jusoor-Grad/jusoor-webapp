@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   flexRender,
@@ -41,43 +40,34 @@ import { useNavigate } from "react-router-dom";
 
 const data = [
   {
-    id: "m5gr84i9",
-    amount: 316,
-    name: "مجد بيازيد",
-    status: "success",
-    email: "ken99@yahoo.com",
+    id: "abc123",
+    username: 123,
+    email: "john.doe@example.com",
+    department: "sales",
   },
   {
-    id: "3u1reuv4",
-    amount: 242,
-    name: "مجد بيازيد",
-
-    status: "success",
-    email: "Abe45@gmail.com",
+    id: "def456",
+    username: 456,
+    email: "jane.smith@example.com",
+    department: "marketing",
   },
   {
-    id: "derv1ws0",
-    amount: 837,
-    name: "مجد بيازيد",
-
-    status: "processing",
-    email: "Monserrat44@gmail.com",
+    id: "ghi789",
+    username: 789,
+    email: "bob.jones@example.com",
+    department: "development",
   },
   {
-    id: "5kma53ae",
-    amount: 874,
-    name: "مجد بيازيد",
-
-    status: "success",
-    email: "Silas22@gmail.com",
+    id: "jkl012",
+    username: 101,
+    email: "alice.johnson@example.com",
+    department: "finance",
   },
   {
-    id: "bhqecj4p",
-    amount: 721,
-    name: "مجد بيازيد",
-
-    status: "failed",
-    email: "carmella@hotmail.com",
+    id: "mno345",
+    username: 202,
+    email: "sam.wilson@example.com",
+    department: "hr",
   },
 ];
 
@@ -105,8 +95,8 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
-    header: () => <p>Name</p>,
+    accessorKey: "id",
+    header: () => <p>{i18n.t("patients.id")}</p>,
     cell: ({ row }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const navigate = useNavigate(); // Initialize useNavigate
@@ -121,36 +111,30 @@ export const columns = [
           className="underline"
           style={{ cursor: "pointer" }}
         >
-          {row.original.name}
+          {row.original.id}
         </a>
       );
     },
   },
   {
-    accessorKey: "status",
-    header: () => <p>Status</p>,
+    accessorKey: "username",
+    header: () => <p>{i18n.t("patients.username")}</p>,
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("username")}</div>
     ),
   },
   {
     accessorKey: "email",
-    header: () => <p>Email</p>,
+    header: () => <p>{i18n.t("patients.email")}</p>,
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
   {
-    accessorKey: "amount",
-    header: () => <p>Amount</p>,
+    accessorKey: "department",
+    header: () => <p>{i18n.t("patients.department")}</p>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
+      const department = row.getValue("department");
 
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="font-medium">{formatted}</div>;
+      return <div className="font-medium">{department}</div>;
     },
   },
   {
